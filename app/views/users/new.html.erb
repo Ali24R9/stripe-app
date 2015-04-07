@@ -1,0 +1,38 @@
+<h1> Register </h1>
+
+<%= form_for @user do |f| %>
+  
+  <% if @user.errors.any? %>
+    <div class="error_messages">
+      <h3>Please fix these errors: </h3>
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+  <% end %>
+
+  <div class="form-field">
+    <%= f.label :first_name %><br/>
+    <%= f.text_field :first_name %>
+  </div>
+  <div class="form-field">
+    <%= f.label :last_name %><br/>
+    <%= f.text_field :last_name %>
+  </div>
+  <div class="form-field">
+    <%= f.label :email %><br/>
+    <%= f.text_field :email %>
+  </div>
+  <div class="form-field">
+    <%= f.label :password %><br/>
+    <%= f.password_field :password %>
+  </div>
+  <div class="form-field">
+    <%= f.label :password_confirmation %><br/>
+    <%= f.password_field :password_confirmation %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %> 

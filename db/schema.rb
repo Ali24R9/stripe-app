@@ -11,10 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150227004704) do
+ActiveRecord::Schema.define(version: 20150407005430) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "purchases", force: :cascade do |t|
+    t.string   "name"
+    t.decimal  "price"
+    t.integer  "user_id"
+    t.boolean  "subscribed"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
@@ -30,6 +39,7 @@ ActiveRecord::Schema.define(version: 20150227004704) do
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
+    t.boolean  "guest"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
