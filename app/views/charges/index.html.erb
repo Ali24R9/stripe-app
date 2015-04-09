@@ -1,0 +1,28 @@
+<h1>Subscription Plans</h1>
+<hr/>
+
+<div class="row">
+  <h3>One Time Shipment</h3>
+  <p>One shipment of 3 items for $20</p>
+  <%= button_to "Purchase", charges_path, {amount: 20} %>
+</div>
+  <hr/>
+<div class="row">
+  <h3>Two Time Shipment</h3>
+  <p>Two shipments of 3 items for $35</p>
+  <%= button_to "Purchase", charges_path, {amount: 35} %>
+
+</div>
+<hr/>
+<div class="row">
+  <h3>Three Time Shipment</h3>
+  <p>Three shipments of 3 items for $50</p>
+  <%= button_to "Purchase", charges_path, {amount: 50} %>
+
+</div>
+<hr/>
+<div class="row">
+  <h3>Yearly Subscription</h3>
+  <p>12 shipments of 3 items for $110</p>
+  <%= button_to "Purchase", charges_path, {amount: 110} %>
+</div>
