@@ -5,7 +5,6 @@ Rails.application.routes.draw do
              :controllers => { :registrations => "users/registrations", :sessions => "users/sessions"}
   resources :users, only: [:show]
 
-  resources :purchases
   resources :charges
 
   # The priority is based upon order of creation: first created -> highest priority.

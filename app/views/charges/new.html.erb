@@ -1,30 +1,64 @@
 <%= form_tag charges_path do %>
-<div class="row">
-    <h3>One Time Shipment</h3>
-    <p>One shipment of 3 items for $20</p>
-    <%= radio_button_tag(:amount, 2000) %>
-  </div>
-    <hr/>
-  <div class="row">
-    <h3>Two Time Shipment</h3>
-    <p>Two shipments of 3 items for $35</p>
-    <%= radio_button_tag(:amount, 3500) %>
 
-  </div>
-  <hr/>
-  <div class="row">
-    <h3>Three Time Shipment</h3>
-    <p>Three shipments of 3 items for $50</p>
-    <%= radio_button_tag(:amount, 5000) %>
 
-  </div>
-  <hr/>
-  <div class="row">
-    <h3>Yearly Subscription</h3>
-    <p>12 shipments of 3 items for $110</p>
-    <%= radio_button_tag(:amount, 11000) %>
-  </div>
+<% end %>
+
+<%= form_tag charges_path do %>
+  <article>
+    <label class="amount">
+      <span>One time shipment for $20</span>
+    </label>
+  </article>
+  <%= hidden_field_tag :amount, 2000 %>
+  <%= hidden_field_tag :name, "1 month" %>
+
   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
           data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-></script>
+          data-description="A month's subscription"
+          data-amount="2000"></script>
+<% end %>
+
+<%= form_tag charges_path do %>
+  <article>
+    <label class="amount">
+      <span>Two shipments for $35</span>
+    </label>
+  </article>
+  <%= hidden_field_tag :amount, 3500 %>
+  <%= hidden_field_tag :name, "2 months" %>
+
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+          data-description="2 month subscription"
+          data-amount="3500"></script>
+<% end %>
+
+<%= form_tag charges_path do %>
+  <article>
+    <label class="amount">
+      <span>Three shipments for $50</span>
+    </label>
+  </article>
+  <%= hidden_field_tag :name, "3 months" %>
+  <%= hidden_field_tag :amount, 5000 %>
+
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+          data-description="3 month subscription"
+          data-amount="5000"></script>
+<% end %>
+
+<%= form_tag charges_path do %>
+  <article>
+    <label class="amount">
+      <span>1 year of shipments for $110</span>
+    </label>
+  </article>
+  <%= hidden_field_tag :name, "1 year" %>
+  <%= hidden_field_tag :amount, 11000 %>
+
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+          data-description="A year's subscription"
+          data-amount="11000"></script>
 <% end %>

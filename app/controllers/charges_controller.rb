@@ -1,13 +1,13 @@
 class ChargesController < ApplicationController
 
-  def new; end
-
   def create
     # Amount in cents
-    @amount = params[:amount]
+    @amount = params[:amount] 
+
+    Charge.create(name: params[:name], amount: BigDecimal(params[:amount]), stripe_token: params[:stripeToken])
 
     customer = Stripe::Customer.create(
-      :email => 'example@stripe.com',
+      :email => params[:stripeEmail],
       :card  => params[:stripeToken]
     )
 
@@ -23,4 +23,5 @@ class ChargesController < ApplicationController
     redirect_to charges_path
   end
 
+  def success; end
 end
