@@ -1,0 +1,36 @@
+<%= form_for @user, url: submit_path do |f| %>
+  <div class="form-group">
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label "email" %>
+    <%= f.text_field "email" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label "address" %>
+    <%= f.text_field "address" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :address %>
+    <%= f.country_select :address, {priority: %w(US CA), prompt: 'Please select a country'} %>
+  </div>
+
+  <div id="subregions">
+  </div>
+
+  <div class="form-group">
+    <%= f.label "phone" %>
+    <%= f.text_field "phone" %>
+  </div>
+
+
+<% end %>

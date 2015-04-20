@@ -4,8 +4,12 @@ Rails.application.routes.draw do
   devise_for :users, 
              :controllers => { :registrations => "users/registrations", :sessions => "users/sessions"}
   resources :users, only: [:show]
+  
+  match "charges/submit" => "charges#submit", :via => :post, :as => :submit
+  match "charges/subregion_select" => "charges#subregion_select", :via => :post, :as => :subregion_select
 
   resources :charges
+  #charges
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

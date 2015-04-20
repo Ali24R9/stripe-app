@@ -1,5 +1,20 @@
 class ChargesController < ApplicationController
 
+  def index
+    @user = User.new
+  end
+
+  def subregion_select
+    @parent_region = params[:parent_region]
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def submit
+
+  end
+
   def create
     # Amount in cents
     #money gem converts the amount given to cents when saved, so use dollar amount
