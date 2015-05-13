@@ -8,6 +8,13 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
 
-  has_many :charges
+  # has_many :charges
+
+  protected 
+  def password_required?
+    if self.guest == true
+      false
+    end
+  end
   
 end

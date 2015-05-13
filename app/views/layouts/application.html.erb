@@ -8,45 +8,46 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Pacifico" />
 
 </head>
 <body>
 
-<div class="navbar navbar-fixed-top navbar-bold" data-spy="affix" data-offset-top="1000">
-  <div class="container">
+<nav class="navbar navbar-default nav">
+  <div class="container-fluid">
     <div class="navbar-header">
-      <%= link_to "Home", root_path,class: "navbar-brand" %>
-      <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-      </a>
+      </button>
+      <a class="navbar-brand" href="#">Monalisa Ottawa</a>
     </div>
-    <div class="navbar-collapse collapse" id="navbar">
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="#sec1">Section 1</a></li>
-        <li><a href="#sec2">Section 2</a></li>
-        <li><a href="#sec3">Section 3</a></li>
-        <li><a href="#sec4">Section 4</a></li>
-        <% if user_signed_in? %>
-          <li><%= link_to "Profile", user_path(current_user) %></li>
-          <li><%= link_to "Profile", user_path(current_user) %></li>
-          <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
-          <li>Signed in as <%= current_user.email %></li>
-
-        <% else %>
-          <li><%= link_to "Sign up", new_user_registration_path %></li>
-          <li><%= link_to "Sign in", new_user_session_path %></li>
-        <% end %>
+        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+        <li><a href="#">Link</a></li>
+        
       </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+      <% if user_signed_in? %>
+        <li><%= link_to "Profile", user_path(current_user) %></li>
+        <li><%= link_to "Profile", user_path(current_user) %></li>
+        <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+        <li>Signed in as <%= current_user.email %></li>
+
+      <% else %>
+        <li><%= link_to "Sign up", new_user_registration_path %></li>
+        <li><%= link_to "Sign in", new_user_session_path %></li>
+      <% end %>      </ul>
     </div>
-
-
   </div>
-</div>
-<div>
+</nav>
+<div class="container">
   <%= yield %>
 </div>
-
 </body>
 </html>

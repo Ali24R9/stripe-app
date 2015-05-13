@@ -2,16 +2,15 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-$ ->
-  $('select#user_address').change (event) ->
-    select_wrapper = $('#user_state_code_wrapper')
+$(document).ready ->
+  $('select#customer_country').change (event) ->
+    select_wrapper = $('#customer_state_code_wrapper')
 
     $('select', select_wrapper).attr('disabled', true)
 
     parent_region = $(this).val()
-
     $.ajax
-      url: "/charges/subregion_select",
+      url: "/customers/subregion_select",
       type: "POST"
       data: {"parent_region": parent_region}
  

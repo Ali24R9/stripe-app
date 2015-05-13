@@ -1,5 +1,5 @@
 class Charge < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :customer
   monetize :amount_subunit, :as => "amount", :allow_nil => true
 
   def cents_to_dollars

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Subscriptions</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Pacifico">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+<p>Value 1</p>
+<div id="form">
+<p><input id="first_number_mandatory" type="text" value="5"/></p>
+
+<p><input name="operator" id="operator" type="radio" value="0" />&nbsp;+ &nbsp; &nbsp;<input name="operator" id="operator" type="radio" value="1" />&nbsp;- &nbsp; &nbsp; &nbsp;<input name="operator" id="operator" type="radio" value="2" />&nbsp; x &nbsp; &nbsp;<input name="operator" id="operator" type="radio" value="3" />&nbsp;&nbsp;&nbsp;<span style="font-family: 'Lucida Grande', 'Lucida Sans Unicode', Helvetica, Arial, Verdana, sans-serif; font-size: 12px; line-height: 18px;">&divide;</span></p>
+
+<p><span style="font-family: 'Lucida Grande', 'Lucida Sans Unicode', Helvetica, Arial, Verdana, sans-serif; font-size: 12px; line-height: 18px;">Value 2</span></p>
+
+<p><input id="second_number_mandatory" type="text" /></p>
+</div>
+<p><input id="calculate" type="button" value="Calculate" /></p>
+
+<p>Result:</p>
+
+<div id="calculated_formula" string="">&nbsp;</div>
+
+
+
+</body>
+<script> 
+  $(document).ready(function(){
+          var second_num = parseInt($('#second_number_mandatory').val());
+alert(second_num)
+  function calculate(){
+      var first_num = parseInt($('#first_number_mandatory').val());
+      var operator = parseInt($('input[name="operator"]:checked', '#form').val());
+      var second_num = parseInt($('#second_number_mandatory').val());
+      var result = 0
+        
+      switch(operator){
+        case 0:
+        result = first_num + second_num;
+        break;
+        case 1: 
+        result = first_num - second_num;
+        break;
+        case 2: 
+          result = first_num * second_num;
+        break;
+        case 3: 
+        result = first_num / second_num;
+        break;
+    };
+      $('#calculated_formula').text(result);               
+  };
+  $("#calculate").on("click", calculate)
+});
+</script>
+</html>
+<!-- <html>
+<body>
+<p><input id="num" name="nth_number_mandatory" type="text" value="0" /></p>
+
+<p><input id="calculate" name="calculate" type="button" value="Calculate" /></p>
+
+<p>&nbsp;</p>
+
+<div id="result">&nbsp;</div>
+
+</body>
+<script>
+  $(document).ready(function(){
+    alert("hi")
+  function fib(n){
+    var result = 0 
+    if(n<=2){ 
+      return n-1;
+    } 
+    result = fib(n-1) + fib(n-2) 
+    return result;
+    };
+
+  $("#calculate").on("click", function(){
+    result = fib(8)
+    $("#result").text(result)
+  });
+});
+</script>
+</html> -->

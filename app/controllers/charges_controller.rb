@@ -1,18 +1,13 @@
 class ChargesController < ApplicationController
 
-  def index
-    @user = User.new
-  end
-
-  def subregion_select
-    @parent_region = params[:parent_region]
-    respond_to do |format|
-      format.js
-    end
-  end
-
   def submit
-
+    @customer = Customer.new(customer_params)
+    if !@customer.valid?
+      flash[:notice] = "Please fix these errors"
+      render "index"
+    else
+      redirect_to new_charge_path
+    end
   end
 
   def create
@@ -20,7 +15,7 @@ class ChargesController < ApplicationController
     #money gem converts the amount given to cents when saved, so use dollar amount
     local_charge = Charge.create(name: params[:name], amount: params[:amount], stripe_token: params[:stripeToken])
 
-    customer = Stripe::Customer.create(
+    stripe_customer = Stripe::Customer.create(
       :email => params[:stripeEmail],
       :card  => params[:stripeToken]
     )
@@ -28,7 +23,7 @@ class ChargesController < ApplicationController
     amount_cents = local_charge.amount.cents 
 
     charge = Stripe::Charge.create(
-      :customer    => customer.id,
+      :customer    => stripe_customer.id,
       :amount      => amount_cents,
       :description => 'Rails Stripe customer',
       :currency    => 'usd'

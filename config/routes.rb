@@ -5,10 +5,11 @@ Rails.application.routes.draw do
              :controllers => { :registrations => "users/registrations", :sessions => "users/sessions"}
   resources :users, only: [:show]
   
-  match "charges/submit" => "charges#submit", :via => :post, :as => :submit
-  match "charges/subregion_select" => "charges#subregion_select", :via => :post, :as => :subregion_select
+  # match "customers/submit" => "customers#submit", :via => :post, :as => :submit
+  match "customers/subregion_select" => "customers#subregion_select", :via => :post, :as => :subregion_select
 
   resources :charges
+  resources :customers
   #charges
 
   # The priority is based upon order of creation: first created -> highest priority.
