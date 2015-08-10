@@ -11,7 +11,7 @@ class CustomersController < ApplicationController
       @country = params[:country]
       @subregion = params[:subregion]
       flash.now[:notice] = "One or more fields are empty"
-      render "new", locals: {country: @country, subregion: @subregion}
+      render "new"
     else
       render new_charge_path
     end

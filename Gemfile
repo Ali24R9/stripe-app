@@ -42,6 +42,7 @@ gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 gem 'money-rails'
 gem 'jquery-turbolinks'
 gem 'activeadmin', github: 'activeadmin'
+gem 'heroku'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
