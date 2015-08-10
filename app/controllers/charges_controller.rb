@@ -1,18 +1,23 @@
 class ChargesController < ApplicationController
 
-  def submit
-    @customer = Customer.new(customer_params)
-    if !@customer.valid?
-      flash[:notice] = "Please fix these errors"
-      render "index"
-    else
-      redirect_to new_charge_path
-    end
+  # def submit
+  #   @customer = Customer.new(customer_params)
+  #   if !@customer.valid?
+  #     flash.now[:notice] = "Please fix these errors"
+  #     render "index"
+  #   else
+  #     redirect_to new_charge_path
+  #   end
+  # end
+
+  def new
+    @amount = params[amount]
   end
 
   def create
     # Amount in cents
     #money gem converts the amount given to cents when saved, so use dollar amount
+    # CustomerMailer.customer_email(Customer.find(params[:customer])).deliver
     local_charge = Charge.create(name: params[:name], amount: params[:amount], stripe_token: params[:stripeToken])
 
     stripe_customer = Stripe::Customer.create(

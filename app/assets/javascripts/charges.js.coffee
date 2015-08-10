@@ -13,4 +13,3 @@ $(document).ready ->
       url: "/customers/subregion_select",
       type: "POST"
       data: {"parent_region": parent_region}
- 
