@@ -1,15 +1,5 @@
 class ChargesController < ApplicationController
 
-  # def submit
-  #   @customer = Customer.new(customer_params)
-  #   if !@customer.valid?
-  #     flash.now[:notice] = "Please fix these errors"
-  #     render "index"
-  #   else
-  #     redirect_to new_charge_path
-  #   end
-  # end
-
   def new
     @amount = params[amount]
   end

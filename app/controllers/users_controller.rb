@@ -8,13 +8,7 @@ class UsersController < ApplicationController
   end 
 
   def show
-    # if current_user.id == params[:id]
-      @user = User.find(params[:id])
-      # redirect_to user_path
-    # else
-    #   flash[:notice] = "You cannot view that page"
-    #   redirect_to root_path
-    # end
+    @user = User.find(params[:id])
   end
 
 end
