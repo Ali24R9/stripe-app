@@ -17,6 +17,12 @@ GIT
       sass-rails
 
 GIT
+  remote: git://github.com/alexpeattie/heroku_secrets.git
+  revision: 717af8e0acf399bc88d2c8c1a7e230023942af0f
+  specs:
+    heroku_secrets (0.0.2)
+
+GIT
   remote: https://github.com/stripe/stripe-ruby
   revision: a980110740490b25bd2d60b33967306991348f70
   specs:
@@ -319,6 +325,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   devise
   heroku
+  heroku_secrets!
   jbuilder (~> 2.0)
   jquery-rails
   jquery-turbolinks
